@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: development
+  name: test
+spec:
+  containers:
+  - image: nginx:alpine
+    name: con1

@@ -1,0 +1,21 @@
+apiVersion: apps:kruise.io/v1alpha1
+kind: SidecarSet
+metadata:
+  name: nash-sidecarset
+spec:
+  selector:
+    matchLabels:
+      app: development
+    updateStrategy:
+      type: RollingUpdate
+      maxUnavailable: 1
+    containers:
+    - name: Sidecar
+      image: alpine:latest
+      command: ["sleep", "3600"]
+      volumeMounts:
+      - name: vol1
+        mountPath: /var/log
+  volumes:
+  - name: vol1
+    emptyDir: {}
